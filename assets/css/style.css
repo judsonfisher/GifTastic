@@ -1,0 +1,21 @@
+.content {
+	float: right;
+}
+
+.buttons-view {
+	/*border: 1px black solid;*/
+	float: left;
+}
+
+.gif-input {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.gif-div {
+	float: left;
+}
+
+button {
+	margin: 10px;
+}
