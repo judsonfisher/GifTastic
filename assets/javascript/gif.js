@@ -28,34 +28,23 @@ function displayGif() {
 
     		var animated = results[x].images.fixed_height.url;
 
-    		var still = results[x].images.fixed_height_still.url
+    		var still = results[x].images.fixed_height_still.url;
+
+    		charImg.attr("data-still", still);
+
+    		charImg.attr("data-animate", animated);
+
+    		charImg.attr("data-state", still);
 
     		charImg.attr("src", still);
 
-    		charImg.attr("data-state", "still"); // may need to be deleted
+    		charImg.addClass("gif");
 
     		charDiv.prepend(p);
 
     		charDiv.append(charImg);
 
     		$("#gif-div").prepend(charDiv);
-
-    		$("img").on("click", function() {
-
-				console.log(charImg.attr("src"));	
-
-				console.log(charImg.attr("data-state"));
-
-				var state = $(this).attr("data-state");
-
-				if (state === "still") {
-			        charImg.attr("src", animated);
-			      } else {
-			        $(this).attr("src", $(this).attr("data-still"));
-			        $(this).attr("data-state", "still");
-			      }
-
-			    });
 
     	};
     });
@@ -90,6 +79,22 @@ $("#add-gif").on("click", function(event) {
 	characters.push(character);
 
 	renderButtons();
+
+});
+
+$("img").on("click", function() {
+
+	var state = $(this).attr("data-state");
+
+	console.log(this);
+
+	if (state === still) {
+        $(this).attr("src", $(this).attr("data-animated"));
+		$(this).attr("data-state", "animated");
+      } else if (state === animated) {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      };
 
 });
 
